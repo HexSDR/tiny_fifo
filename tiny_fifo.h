@@ -18,4 +18,12 @@ struct ts_fifo {
     FIFO_NODE_TYPE buff[MAX_SIZE]
 };
 
+
+
+void init_ts_fifo(struct ts_fifo*p) ; 
+void push(struct ts_fifo*p,FIFO_NODE_TYPE d) ; 
+int is_fifo_empty(struct ts_fifo*p) ; 
+unsigned int is_fifo_full(struct ts_fifo*p) ;
+FIFO_NODE_TYPE pop(struct ts_fifo*p)  ;
+
 #endif 
