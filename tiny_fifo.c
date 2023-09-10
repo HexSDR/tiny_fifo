@@ -48,7 +48,7 @@ unsigned int is_fifo_full(struct ts_fifo*p)
     return r ;
 }
 
-FIFO_NODE_TYPE pop(void)
+FIFO_NODE_TYPE pop(struct ts_fifo*p)
 {
     NODE_TYPE r 
     pthread_mutex_lock(&(p->fifo_lock));
