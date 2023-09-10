@@ -1,8 +1,15 @@
 
+
+#ifdef __cplusplus
+ extern "C" {
+ #endif
+
+
+
 #include <pthread.h>
 #include <semaphore.h>
 
-
+#include "tiny_fifo.h"
 void init_ts_fifo(struct ts_fifo*p)
 {
     
@@ -54,3 +61,8 @@ FIFO_NODE_TYPE pop(void)
 }
 
  
+ 
+#ifdef __cplusplus
+}
+#endif
+
