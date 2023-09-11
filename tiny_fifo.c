@@ -23,7 +23,7 @@ void init_ts_fifo(struct ts_fifo*p)
 void push(struct ts_fifo*p,FIFO_NODE_TYPE d)
 {
     pthread_mutex_lock(&(p->fifo_lock));
-    p->buff[wr_ptr++]=d ;
+    p->buff[p->wr_ptr++]=d ;
     p->wr_ptr&=(MAX_SIZE-1);
     p->gap++;
     pthread_mutex_unlock(&(p->fifo_lock));
@@ -43,18 +43,18 @@ unsigned int is_fifo_full(struct ts_fifo*p)
 {
     int r ;
     pthread_mutex_lock(&(p->fifo_lock));
-    r=(gap==MAX_SIZE);
+    r=(p->gap==MAX_SIZE);
     pthread_mutex_unlock(&(p->fifo_lock));
     return r ;
 }
 
 FIFO_NODE_TYPE pop(struct ts_fifo*p)
 {
-    NODE_TYPE r 
+    FIFO_NODE_TYPE r ;
     pthread_mutex_lock(&(p->fifo_lock));
-    r=buff[rd_ptr++];
-    rd_ptr&=(MAX_SIZE-1);
-    gap--;
+    r=p->buff[p->rd_ptr++];
+    p->rd_ptr&=(MAX_SIZE-1);
+    p->gap--;
     pthread_mutex_unlock(&(p->fifo_lock));
     
     return r ;
