@@ -4,7 +4,7 @@
 #ifndef  __TINY_FIFO_H
 #define __TINY_FIFO_H
 
-typedef  int  FIFO_NODE_TYPE
+typedef  int  FIFO_NODE_TYPE   ;
 
 
 #define MAX_BIT  7
