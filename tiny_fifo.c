@@ -3,21 +3,17 @@
 #ifdef __cplusplus
  extern "C" {
  #endif
-
-
-
+ 
 #include <pthread.h>
 #include <semaphore.h>
 
 #include "tiny_fifo.h"
+#include "trx_runner.h"
 void init_ts_fifo(struct ts_fifo*p)
 {
-    
-    pthread_mutex_init(&(p->fifo_lock),NULL);
-    //init mutex
+    pthread_mutex_init(&(p->fifo_lock),NULL);//init mutex
     p->wr_ptr=p->rd_ptr=p->gap=0 ;
     pthread_mutex_unlock(&(p->fifo_lock));
-    
 }
 
 void push(struct ts_fifo*p,FIFO_NODE_TYPE d)
